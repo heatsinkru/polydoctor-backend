@@ -28,5 +28,15 @@ Médecin
 - R recherche patient par nom
 - U valider vaccin patient
 
+Front
+- Ajouter les champs dans formulaire inscription
+- Vérifier affichage des centres, patients et rdv
+
+Back
+- Fix logout
+- Vérifier endpoints
+- Gestion d'accès aux endpoints
+- 
+
 
 
