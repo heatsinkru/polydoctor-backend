@@ -36,7 +36,7 @@ Back
 - Fix logout
 - Vérifier endpoints
 - Gestion d'accès aux endpoints
-- 
+- Création des champs auto dans la BDD
 
 
 
