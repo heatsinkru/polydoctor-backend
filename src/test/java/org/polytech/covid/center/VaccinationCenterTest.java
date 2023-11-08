@@ -1,6 +1,5 @@
 package org.polytech.covid.center;
 
-import static org.hamcrest.CoreMatchers.is;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -24,7 +23,7 @@ public class VaccinationCenterTest {
 
     @Test
     public void testGetCenters() throws Exception {
-        mockMvc.perform(get("http://localhost:8080/public/centers")).andExpect(status().isOk());
+        mockMvc.perform(get("/public/centers")).andExpect(status().isOk());
     }
 
 }
