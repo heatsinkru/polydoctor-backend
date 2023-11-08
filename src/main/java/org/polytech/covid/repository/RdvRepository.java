@@ -7,5 +7,6 @@ import java.util.Date;
 
 public interface RdvRepository extends JpaRepository<Rdv, Integer> {
 
-    public Rdv findByDate(Date date);
+    Rdv findByDate(Date date);
+
 }

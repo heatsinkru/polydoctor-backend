@@ -5,22 +5,29 @@ import java.util.Date;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotBlank;
 
 @Entity
 @Table(name = "rdv")
 public class Rdv {
     
     @Id
-    @GeneratedValue
-    private int id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @NotBlank
     private Date date;
+
     @ManyToOne(cascade = {CascadeType.REMOVE, CascadeType.PERSIST})
     private Patient patient;
+
     @ManyToOne(cascade = {CascadeType.REMOVE, CascadeType.PERSIST})
     private User user;
+    
     @ManyToOne(cascade = {CascadeType.REMOVE, CascadeType.PERSIST})
     private VaccinationCenter vaccinationCenter;
 
@@ -50,7 +57,7 @@ public class Rdv {
 
 
     // SET
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
     public void setDate(Date date) {

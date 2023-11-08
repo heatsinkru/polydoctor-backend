@@ -7,10 +7,8 @@ import java.util.List;
 
 public interface VaccinationCenterRepository extends JpaRepository<VaccinationCenter, Integer> {
 
-        public List<VaccinationCenter> findAllByCity(String city);
-
-        public List<VaccinationCenter> findAllByName(String name);
-
-        public List<VaccinationCenter> findAllById(Integer id);
+    List<VaccinationCenter> findAllByCity(String city);
+    List<VaccinationCenter> findAllByName(String name);
+    List<VaccinationCenter> findAllById(Integer id);
 
 }

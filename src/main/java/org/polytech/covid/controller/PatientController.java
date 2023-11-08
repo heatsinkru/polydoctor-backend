@@ -3,7 +3,7 @@ package org.polytech.covid.controller;
 import java.util.List;
 
 import org.polytech.covid.domain.Patient;
-import org.polytech.covid.service.PatientService;
+import org.polytech.covid.security.services.PatientService;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,32 +20,32 @@ public class PatientController {
     @Autowired
     private PatientService PatientRepository;
 
-    @GetMapping("/api/public/patients")
+    @GetMapping("/public/patients")
     public List<Patient> getAllPatient() {
         return PatientRepository.findAll();
     }
 
-    @PostMapping("/api/public/patient/")
-    public ResponseEntity create(@RequestBody Patient patient) {
+    @PostMapping("/public/patient/")
+    public ResponseEntity<?> create(@RequestBody Patient patient) {
         System.out.println(patient.getId());
         PatientRepository.addPatient(patient);
         return ResponseEntity.status(201).build();
     }
 
-    @GetMapping("/api/public/patient/{id}")
+    @GetMapping("/public/patient/{id}")
     public Patient get(@PathVariable Integer id) {
         return PatientRepository.findById(id);
     }
 
-    @PutMapping("/api/public/patient/{id}")
-    public ResponseEntity update(@PathVariable Integer id, @RequestBody Patient patient) {
+    @PutMapping("/public/patient/{id}")
+    public ResponseEntity<?> update(@PathVariable Integer id, @RequestBody Patient patient) {
         Patient patientToUpdate = PatientRepository.findById(id);
         if (patientToUpdate == null) {
             return ResponseEntity.notFound().build();
         }
         patientToUpdate.setLastname(patient.getLastname());
         patientToUpdate.setFirstname(patient.getFirstname());
-        patientToUpdate.setMail(patient.getMail());
+        patientToUpdate.setEmail(patient.getEmail());
         patientToUpdate.setPhone(patient.getPhone());
         patientToUpdate.setBirthdate(patient.getBirthdate());
         patientToUpdate.setNbVaccin(patient.getNbVaccin());
@@ -54,8 +54,8 @@ public class PatientController {
         return ResponseEntity.ok().build();
     }
 
-    @DeleteMapping("/api/public/patient/{id}")
-    public ResponseEntity delete(@PathVariable Integer id) {
+    @DeleteMapping("/public/patient/{id}")
+    public ResponseEntity<?> delete(@PathVariable Integer id) {
         Patient patientToDelete = PatientRepository.findById(id);
         if (patientToDelete == null) {
             return ResponseEntity.notFound().build();

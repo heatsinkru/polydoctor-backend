@@ -3,7 +3,7 @@ package org.polytech.covid.controller;
 import java.util.List;
 
 import org.polytech.covid.domain.VaccinationCenter;
-import org.polytech.covid.service.VaccinationCenterService;
+import org.polytech.covid.security.services.VaccinationCenterService;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,24 +20,24 @@ public class VaccinationCenterController {
     @Autowired
     private VaccinationCenterService CenterRepository;
 
-    @GetMapping("/api/public/centers")
+    @GetMapping("/public/centers")
     public List<VaccinationCenter> getAllCenter() {
         return CenterRepository.findAll();
     }
 
-    @PostMapping("/api/public/center/")
-    public ResponseEntity create(@RequestBody VaccinationCenter center) {
+    @PostMapping("/public/center/")
+    public ResponseEntity<?> create(@RequestBody VaccinationCenter center) {
         CenterRepository.addCenter(center);
         return ResponseEntity.status(201).build();
     }
 
-    @GetMapping("/api/public/center/{id}")
+    @GetMapping("/public/center/{id}")
     public VaccinationCenter get(@PathVariable Integer id) {
         return CenterRepository.findById(id);
     }
 
-    @PutMapping("/api/public/center/{id}")
-    public ResponseEntity update(@PathVariable Integer id, @RequestBody VaccinationCenter center) {
+    @PutMapping("/public/center/{id}")
+    public ResponseEntity<?> update(@PathVariable Integer id, @RequestBody VaccinationCenter center) {
         VaccinationCenter centerToUpdate = CenterRepository.findById(id);
         if (centerToUpdate == null) {
             return ResponseEntity.notFound().build();
@@ -51,8 +51,8 @@ public class VaccinationCenterController {
         return ResponseEntity.ok().build();
     }
 
-    @DeleteMapping("/api/public/center/{id}")
-    public ResponseEntity delete(@PathVariable Integer id) {
+    @DeleteMapping("/public/center/{id}")
+    public ResponseEntity<?> delete(@PathVariable Integer id) {
         VaccinationCenter centerToDelete = CenterRepository.findById(id);
         if (centerToDelete == null) {
             return ResponseEntity.notFound().build();

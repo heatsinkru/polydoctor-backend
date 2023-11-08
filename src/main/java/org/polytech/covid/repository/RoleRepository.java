@@ -1,5 +1,16 @@
 package org.polytech.covid.repository;
 
-public class RoleRepository {
-    
+import java.util.Optional;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+import org.polytech.covid.domain.ERole;
+import org.polytech.covid.domain.Role;
+
+@Repository
+public interface RoleRepository extends JpaRepository<Role, Long> {
+
+  Optional<Role> findByName(ERole name);
+  
 }

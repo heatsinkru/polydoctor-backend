@@ -16,18 +16,18 @@ public class Doctor extends User {
 
     @Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
+	private Long id;
 
-    @OneToMany(mappedBy = "doctor", cascade = {})
+    @OneToMany(mappedBy = "user", cascade = {})
     private List<Rdv> rdvs;
 
-    public Doctor(String username, String password, String mail, String phone, String firstName, String lastName, String role) {
-        super(username, password, mail, phone, firstName, lastName, role);
+    public Doctor(String username, String password, String email, String phone, String firstName, String lastName) {
+        super(username, password, email, phone, firstName, lastName);
         this.rdvs = new ArrayList<>();
     }
 
     // GET
-    public Integer getId() {
+    public Long getId() {
         return this.id;
     }
     public List<Rdv> getRdvs() {

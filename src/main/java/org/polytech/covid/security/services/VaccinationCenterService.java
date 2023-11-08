@@ -1,4 +1,4 @@
-package org.polytech.covid.service;
+package org.polytech.covid.security.services;
 
 import org.springframework.stereotype.Service;
 import jakarta.persistence.EntityManager;

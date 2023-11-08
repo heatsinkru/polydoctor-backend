@@ -1,10 +1,14 @@
-DROP TABLE IF EXISTS dbuser;
+INSERT INTO roles(name) VALUES('ROLE_DOCTOR');
+INSERT INTO roles(name) VALUES('ROLE_ADMIN');
+INSERT INTO roles(name) VALUES('ROLE_SUPERADMIN');
 
-CREATE TABLE dbuser (
-  id INT AUTO_INCREMENT  PRIMARY KEY,
-  username VARCHAR(250) NOT NULL,
-  password VARCHAR(250) NOT NULL,
-  role VARCHAR(250) NOT NULL
-);
-INSERT INTO dbuser (username, password, role) VALUES ('dbuser', '$2y$10$.qkbukzzX21D.bqbI.B2R.tvWP90o/Y16QRWVLodw51BHft7ZWbc.', 'USER'),
-('dbadmin', '$2y$10$kp1V7UYDEWn17WSK16UcmOnFd1mPFVF6UkLrOOCGtf24HOYt8p1iC', 'ADMIN');
+INSERT INTO vaccination_center(address, city, name, postal_code) VALUES('2 bis Place Thiers', 'Nancy', 'Centre des Congrès Prouvé', '54000');
+
+INSERT INTO users(email, first_name, last_name, password, phone, username, dtype) VALUES ('doctor@mail.com', 'Michel', 'LeDocteur', '$2a$10$G6Ls1GJ2jO5haXcNxokGnOV/aklGUP9BNd6FxoV.NUGSbR3XVCqkW', '111111111', 'doctor', 'User');
+INSERT INTO user_roles(role_id, user_id) VALUES ('1', '1');
+
+INSERT INTO users(email, first_name, last_name, password, phone, username, dtype) VALUES ('admin@mail.com', 'Michel', 'LAdmin', '$2a$10$G6Ls1GJ2jO5haXcNxokGnOV/aklGUP9BNd6FxoV.NUGSbR3XVCqkW', '222222222', 'admin', 'User');
+INSERT INTO user_roles(role_id, user_id) VALUES ('2', '2');
+
+INSERT INTO users(email, first_name, last_name, password, phone, username, dtype) VALUES ('superadmin@mail.com', 'Michel', 'LeSuperAdmin', '$2a$10$G6Ls1GJ2jO5haXcNxokGnOV/aklGUP9BNd6FxoV.NUGSbR3XVCqkW', '333333333', 'superadmin', 'User');
+INSERT INTO user_roles(role_id, user_id) VALUES ('3', '3');

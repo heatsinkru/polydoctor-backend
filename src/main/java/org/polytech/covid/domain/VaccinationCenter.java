@@ -2,9 +2,11 @@ package org.polytech.covid.domain;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotBlank;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,12 +16,21 @@ import java.util.List;
 public class VaccinationCenter {
 
     @Id
-    @GeneratedValue
-    private long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @NotBlank
     private String name;
+
+    @NotBlank
     private String address;
+
+    @NotBlank
     private String city;
+
+    @NotBlank
     private String postalCode;
+
     @OneToMany(mappedBy = "vaccinationCenter", cascade = {})
     private List<Rdv> rdvs;
 
@@ -64,7 +75,7 @@ public class VaccinationCenter {
     }
 
     // SET
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
     public void setName(String name) {
