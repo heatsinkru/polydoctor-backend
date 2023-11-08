@@ -1,0 +1,23 @@
+POST  http://127.0.0.1:8080/public/center/ HTTP/1.1
+Content-Type: application/json
+
+{
+    "name":"Center1",
+    "address":"Address1",
+    "city":"City1",
+    "postalCode":"PostalCode1"
+}
+
+# {
+#     "name":"Center2",
+#     "address":"Address2",
+#     "city":"City2",
+#     "postalCode":"PostalCode2"
+# }
+
+# {
+#     "name":"Center3",
+#     "address":"Address3",
+#     "city":"City3",
+#     "postalCode":"PostalCode3"
+# }
