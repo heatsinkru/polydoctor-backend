@@ -3,6 +3,11 @@ package org.polytech.covid.domain;
 import java.util.HashSet;
 import java.util.Set;
 
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
+import java.util.Date;
+
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -46,7 +51,15 @@ public class User {
   protected String firstName;
 
   @NotBlank
-  protected String lastName;
+  protected String lastName;  
+
+  @NotBlank
+  @CreationTimestamp
+  protected Date createdOn;
+
+  @NotBlank
+  @UpdateTimestamp
+  protected Date lastModifiedOn;
 
   public User() {
   }
@@ -58,6 +71,18 @@ public class User {
     this.phone = phone;
     this.firstName = firstName;
     this.lastName = lastName;
+  }
+
+  public Date getCreatedOn() {
+    return createdOn;
+  }
+
+  public Date getLastModifiedOn() {
+    return lastModifiedOn;
+  }
+
+  public void setLastModifiedOn(Date lastModifiedOn) {
+    this.lastModifiedOn = lastModifiedOn;
   }
 
   public String getLastName() {

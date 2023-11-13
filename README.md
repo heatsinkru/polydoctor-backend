@@ -12,11 +12,21 @@ git clone https://gitlab.univ-lorraine.fr/dittedes1u/polydoctor.git
 cd polydoctor
 ```
 
-## Compte par défaut
+## Comptes par défaut
 
-Docteur : 
+### Docteur : 
 
 - username : doctor
+- password : doctormdp
+
+### Admin : 
+
+- username : admin
+- password : doctormdp
+
+### Super admin : 
+
+- username : superadmin
 - password : doctormdp
 
 ## Authors and acknowledgment

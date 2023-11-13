@@ -1,5 +1,6 @@
 package org.polytech.covid.payload.response;
 import java.util.List;
+import java.util.Date;
 
 public class JwtResponse {
   private String token;
@@ -10,9 +11,12 @@ public class JwtResponse {
   private String firstName;
   private String lastName;
   private String phone;
+  private Date createdOn;
+  private Date lastModifiedOn;
+
   private List<String> roles;
 
-  public JwtResponse(String accessToken, Long id, String username, String email, List<String> roles, String firstName, String lastName, String phone) {
+  public JwtResponse(String accessToken, Long id, String username, String email, List<String> roles, String firstName, String lastName, String phone, Date createdOn, Date lastModifiedOn) {
     this.token = accessToken;
     this.id = id;
     this.username = username;
@@ -21,6 +25,8 @@ public class JwtResponse {
     this.firstName = firstName;
     this.lastName = lastName;
     this.phone = phone;
+    this.createdOn = createdOn;
+    this.lastModifiedOn = lastModifiedOn;
   }
 
   public String getAccessToken() {
@@ -85,6 +91,18 @@ public class JwtResponse {
 
   public void setPhone(String phone) {
     this.phone = phone;
+  }
+
+  public Date getCreatedOn() {
+    return createdOn;
+  }
+
+  public Date getLastModifiedOn() {
+    return lastModifiedOn;
+  }
+
+  public void setLastModifiedOn(Date lastModifiedOn) {
+    this.lastModifiedOn = lastModifiedOn;
   }
   
   public List<String> getRoles() {

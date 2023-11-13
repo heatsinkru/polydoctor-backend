@@ -3,6 +3,7 @@ package org.polytech.covid.security.services;
 import java.util.Collection;
 import java.util.List;
 import java.util.Objects;
+import java.util.Date;
 import java.util.stream.Collectors;
 
 import org.springframework.security.core.GrantedAuthority;
@@ -27,12 +28,17 @@ public class UserDetailsImpl implements UserDetails {
 
   private String lastName;
 
+  private Date createdOn;
+
+  private Date lastModifiedOn;
+
   @JsonIgnore
   private String password;
 
   private Collection<? extends GrantedAuthority> authorities;
 
   public UserDetailsImpl(Long id, String username, String email, String password, String phone, String firstName, String lastName,
+  Date createdOn, Date lastModifiedOn,
       Collection<? extends GrantedAuthority> authorities) {
     this.id = id;
     this.username = username;
@@ -41,6 +47,8 @@ public class UserDetailsImpl implements UserDetails {
     this.phone = phone;
     this.firstName = firstName;
     this.lastName = lastName;
+    this.createdOn = createdOn;
+    this.lastModifiedOn = lastModifiedOn;
     this.authorities = authorities;
   }
 
@@ -57,6 +65,8 @@ public class UserDetailsImpl implements UserDetails {
         user.getPhone(),
         user.getFirstName(),
         user.getLastName(),
+        user.getCreatedOn(),
+        user.getLastModifiedOn(),
         authorities);
   }
 
@@ -83,6 +93,18 @@ public class UserDetailsImpl implements UserDetails {
 
   public String getLastName() {
     return lastName;
+  }
+
+  public Date getCreatedOn() {
+    return createdOn;
+  }
+
+  public Date getLastModifiedOn() {
+    return lastModifiedOn;
+  }
+
+  public void setLastModifiedOn(Date lastModifiedOn) {
+    this.lastModifiedOn = lastModifiedOn;
   }
 
   @Override
