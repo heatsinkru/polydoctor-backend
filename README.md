@@ -44,6 +44,15 @@ docker compose up --build -d
 > L'application sera alors disponible sur votre navigateur à l'adresse http://localhost:8080/
 
 
+### Installation depuis le dépôt DockerHub
+
+```shell
+docker pull heatsinkru/polydoctor-backend:latest && \
+docker run heatsinkru/polydoctor-backend
+```
+
+> L'application sera alors disponible sur votre navigateur à l'adresse http://localhost:8080/
+
 ### Utilisation d'une pipeline Jenkins
 
 #### Etape 1 : Installation et configuration de Jenkins
